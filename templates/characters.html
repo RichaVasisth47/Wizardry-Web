@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ character.name }} - Wizardry Web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="logo">⚡ WIZARDRY WEB</div>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('houses') }}">Houses</a>
+            <a href="{{ url_for('spells') }}">Spells</a>
+        </div>
+    </nav>
+
+    <div class="container" style="text-align: center;">
+        <h1 class="page-title">{{ character.name }}</h1>
+
+        {% if character.image %}
+            <img src="{{ character.image }}" alt="{{ character.name }}" style="width: 200px; height: 250px; object-fit: cover; border-radius: 10px; border: 2px solid #66fcf1; box-shadow: 0 4px 15px rgba(0,0,0,0.6); margin-bottom: 20px;">
+        {% endif %}
+
+        <div class="magical-card" style="text-align: left; max-width: 500px; margin: 0 auto;">
+            <p><strong>House:</strong> {{ character.house if character.house else 'Unknown' }}</p>
+            <p><strong>Species:</strong> {{ character.species }}</p>
+            <p><strong>Gender:</strong> {{ character.gender }}</p>
+            <p><strong>Patronus:</strong> {{ character.patronus if character.patronus else 'None / Unknown' }}</p>
+            <p><strong>Actor:</strong> {{ character.actor }}</p>
+            <hr style="border: 0; border-top: 1px solid #45a29e; margin: 15px 0;">
+            <p><strong>Role & Story:</strong> {{ character.bio }}</p>
+        </div>
+    </div>
+</body>
+</html>

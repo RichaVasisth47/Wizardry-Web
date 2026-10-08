@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wizardry Web - Harry Potter Universe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Harry Potter style magical font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Magical Navbar -->
+    <nav class="wizard-navbar">
+       <div class="logo" style="color: #ffd700; font-family: 'Cinzel Decorative', cursive, serif; text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);">🧹 WIZARDRY WEB</div>
+        <ul class="nav-links">
+    <li><a href="{{ url_for('home') }}">Home</a></li>
+    <li><a href="{{ url_for('houses') }}">Houses</a></li>
+    <li><a href="{{ url_for('spells') }}">Spells</a></li>
+</ul>
+    </nav>
+
+    <div class="magical-container">
+        <header>
+            <h1>The Archives of Hogwarts</h1>
+            <p class="subtitle">Explore the Witches and Wizards of the Magical World</p>
+        </header>
+
+        <div class="card-grid">
+            {% for char in characters %}
+<a href="{{ url_for('character_detail', character_id=char.id) }}" style="text-decoration: none; color: inherit; display: block;">
+    <div class="wizard-card">
+        <div class="image-container">
+            {% if char.image %}
+                <img src="{{ char.image }}" alt="{{ char.name }}">
+            {% else %}
+                <img src="https://via.placeholder.com/150x200?text=No+Image" alt="Placeholder">
+            {% endif %}
+        </div>
+        <div class="card-info">
+            <h2>{{ char.name }}</h2>
+            <p><strong>House:</strong> <span class="house-badge {{ char.house | lower }}">{{ char.house if char.house else "Unknown" }}</span></p>
+            <p><strong>Actor:</strong> {{ char.actor if char.actor else "N/A" }}</p>
+        </div>
+    </div>
+</a>
+{% endfor %}
+        </div>
+    </div>
+</body>
+</html>

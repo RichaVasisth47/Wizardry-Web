@@ -1,0 +1,391 @@
+/* Magical Background and Font Setup */
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+                url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+    background-size: cover;
+    color: #e0e0e0;
+    font-family: 'MedievalSharp', cursive, serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styling */
+.wizard-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(10, 10, 12, 0.95);
+    border-bottom: 2px solid #554213;
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+}
+
+.nav-brand {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.5rem;
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #cccccc;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #ffcc00;
+    text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+}
+
+/* Container Styling */
+.magical-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+/* Header Styling */
+header h1 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #ffcc00;
+    font-size: 2.8rem;
+    margin-bottom: 5px;
+    text-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #b3b3b3;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+/* Card Grid Layout */
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Wizard Card Design */
+.wizard-card {
+    background: rgba(20, 20, 25, 0.9);
+    border: 2px solid #554213;
+    border-radius: 12px;
+    width: 240px;
+    padding: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wizard-card:hover {
+    transform: translateY(-8px);
+    border-color: #ffcc00;
+    box-shadow: 0 12px 25px rgba(255, 204, 0, 0.3);
+}
+
+/* Image Styling */
+.image-container {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #33260c;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.wizard-card:hover .image-container img {
+    transform: scale(1.05);
+}
+
+/* Card Text Content */
+.card-info h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.1rem;
+    color: #f1f1f1;
+    margin: 15px 0 8px 0;
+}
+
+.card-info p {
+    font-size: 0.95rem;
+    color: #cccccc;
+    margin: 6px 0;
+}
+
+/* Hogwarts House Accents */
+.house-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.house-badge.gryffindor { color: #ae0001; background: #3b0001; border: 1px solid #ae0001; }
+.house-badge.slytherin { color: #2a623d; background: #0c1c12; border: 1px solid #2a623d; }
+.house-badge.ravenclaw { color: #222f5b; background: #0a0e1c; border: 1px solid #222f5b; }
+.house-badge.hufflepuff { color: #ecb939; background: #3d310e; border: 1px solid #ecb939; }
+
+/* House Cards Specific Styling */
+.house-card {
+    width: 250px;
+    padding: 20px;
+    text-align: left;
+}
+
+.house-image-container {
+    background: rgba(10, 10, 12, 0.6);
+    padding: 10px;
+}
+
+.house-image-container img {
+    object-fit: contain !important;
+}
+
+.house-motto {
+    font-style: italic;
+    color: #ffcc00;
+    font-size: 0.85rem;
+    margin: 10px 0 15px 0;
+    min-height: 45px;
+}
+
+.gryffindor-card:hover { border-color: #ae0001; box-shadow: 0 12px 25px rgba(174, 0, 1, 0.4); }
+.slytherin-card:hover { border-color: #2a623d; box-shadow: 0 12px 25px rgba(42, 98, 61, 0.4); }
+.ravenclaw-card:hover { border-color: #222f5b; box-shadow: 0 12px 25px rgba(34, 47, 91, 0.4); }
+.hufflepuff-card:hover { border-color: #ecb939; box-shadow: 0 12px 25px rgba(236, 185, 57, 0.4); }
+
+/* House Cards Theme Styling */
+.house-card {
+    width: 250px;
+    padding: 20px;
+    text-align: left;
+    background: rgba(18, 18, 22, 0.95);
+}
+
+.house-img-wrap {
+    background: rgba(10, 10, 12, 0.6);
+    padding: 10px;
+    height: 200px;
+}
+
+.house-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+}
+
+.house-motto {
+    font-style: italic;
+    color: #ffcc00;
+    font-size: 0.85rem;
+    margin: 10px 0 15px 0;
+    min-height: 45px;
+    border-left: 3px solid #ffcc00;
+    padding-left: 8px;
+}
+
+.gryffindor-box { border-color: #ae0001; }
+.gryffindor-box:hover { box-shadow: 0 12px 25px rgba(174, 0, 1, 0.5); border-color: #ff3333; }
+
+.slytherin-box { border-color: #2a623d; }
+.slytherin-box:hover { box-shadow: 0 12px 25px rgba(42, 98, 61, 0.5); border-color: #2ec456; }
+
+.ravenclaw-box { border-color: #222f5b; }
+.ravenclaw-box:hover { box-shadow: 0 12px 25px rgba(34, 47, 91, 0.5); border-color: #4a6fa5; }
+
+.hufflepuff-box { border-color: #ecb939; }
+.hufflepuff-box:hover { box-shadow: 0 12px 25px rgba(236, 185, 57, 0.5); border-color: #ffe66d; }
+
+
+/* Global Reset & Theme Styling */
+body {
+    background-color: #0b0c10;
+    color: #c5c6c7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styling */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f2833;
+    padding: 15px 30px;
+    border-bottom: 2px solid #66fcf1;
+}
+
+nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #66fcf1;
+    text-shadow: 0 0 8px rgba(102, 252, 241, 0.4);
+}
+
+nav .nav-links a {
+    color: #c5c6c7;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav .nav-links a:hover,
+nav .nav-links a.active {
+    color: #66fcf1;
+    font-weight: bold;
+}
+
+/* Page Container & Headers */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h1.page-title {
+    text-align: center;
+    color: #66fcf1;
+    margin-bottom: 35px;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+/* Cards Grid & Styling (For Spells & Houses) */
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.magical-card {
+    background-color: #1f2833;
+    border: 1px solid #45a29e;
+    border-radius: 8px;
+    padding: 22px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.magical-card:hover {
+    border-color: #66fcf1;
+    transform: translateY(-2px);
+}
+
+.magical-card h3 {
+    color: #66fcf1;
+    margin-top: 0;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.magical-card p {
+    color: #c5c6c7;
+    line-height: 1.5;
+    margin: 8px 0;
+}
+
+/* Global Reset & Theme Styling */
+body {
+    background-color: #0b0c10;
+    color: #c5c6c7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styling */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f2833;
+    padding: 15px 30px;
+    border-bottom: 2px solid #66fcf1;
+}
+
+nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #66fcf1;
+    text-shadow: 0 0 8px rgba(102, 252, 241, 0.4);
+}
+
+nav .nav-links a {
+    color: #c5c6c7;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav .nav-links a:hover,
+nav .nav-links a.active {
+    color: #66fcf1;
+    font-weight: bold;
+}
+
+/* Page Container & Headers */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h1.page-title, h1 {
+    text-align: center;
+    color: #66fcf1;
+    margin-bottom: 35px;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+/* Magical Card Styling (Consistent across all pages) */
+.magical-card {
+    background-color: #1f2833;
+    border: 1px solid #45a29e;
+    border-radius: 8px;
+    padding: 22px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.magical-card p {
+    color: #c5c6c7;
+    line-height: 1.6;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.magical-card strong {
+    color: #66fcf1;
+}
+
+body {
+    font-family: 'MedievalSharp', cursive, sans-serif;
+}
+
+h1, h2, .logo {
+    font-family: 'Cinzel Decorative', cursive, serif;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts Houses - Wizardry Web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Magical Navbar -->
+    <nav class="wizard-navbar">
+        <div class="nav-brand">⚡ Wizardry Web</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('houses') }}" class="active">Houses</a></li>
+            <li><a href="{{ url_for('spells') }}">Spells</a></li>
+        </ul>
+    </nav>
+
+    <div class="magical-container">
+        <header>
+            <h1>The Four Houses of Hogwarts</h1>
+            <p class="subtitle">Choose your allegiance and discover your true house</p>
+        </header>
+
+        <div class="card-grid">
+            <!-- Gryffindor -->
+            <div class="wizard-card house-card gryffindor-box">
+                <div class="image-container house-img-wrap">
+                    <img src="{{ url_for('static', filename='img/gryffindor.png') }}" alt="Gryffindor Crest">
+                </div>
+                <div class="card-info">
+                    <h2>Gryffindor</h2>
+                    <p class="house-motto">"Where dwell the brave at heart"</p>
+                    <p><strong>Founder:</strong> Godric Gryffindor</p>
+                    <p><strong>Traits:</strong> Courage, Bravery, Nerve, Chivalry</p>
+                </div>
+            </div>
+
+            <!-- Slytherin -->
+            <div class="wizard-card house-card slytherin-box">
+                <div class="image-container house-img-wrap">
+                    <img src="{{ url_for('static', filename='img/slytherin.png') }}" alt="Slytherin Crest">
+                </div>
+                <div class="card-info">
+                    <h2>Slytherin</h2>
+                    <p class="house-motto">"Those cunning folk use any means to achieve their ends"</p>
+                    <p><strong>Founder:</strong> Salazar Slytherin</p>
+                    <p><strong>Traits:</strong> Ambition, Cunning, Leadership, Resourcefulness</p>
+                </div>
+            </div>
+
+            <!-- Ravenclaw -->
+            <div class="wizard-card house-card ravenclaw-box">
+                <div class="image-container house-img-wrap">
+                    <img src="{{ url_for('static', filename='img/ravenclaw.png') }}" alt="Ravenclaw Crest">
+                </div>
+                <div class="card-info">
+                    <h2>Ravenclaw</h2>
+                    <p class="house-motto">"Wit beyond measure is man's greatest treasure"</p>
+                    <p><strong>Founder:</strong> Rowena Ravenclaw</p>
+                    <p><strong>Traits:</strong> Intelligence, Knowledge, Wisdom, Wit</p>
+                </div>
+            </div>
+
+            <!-- Hufflepuff -->
+            <div class="wizard-card house-card hufflepuff-box">
+                <div class="image-container house-img-wrap">
+                    <img src="{{ url_for('static', filename='img/hufflepuff.png') }}" alt="Hufflepuff Crest">
+                </div>
+                <div class="card-info">
+                    <h2>Hufflepuff</h2>
+                    <p class="house-motto">"Where they are just and loyal, patient and unafraid of toil"</p>
+                    <p><strong>Founder:</strong> Helga Hufflepuff</p>
+                    <p><strong>Traits:</strong> Loyalty, Dedication, Fair play, Patience</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

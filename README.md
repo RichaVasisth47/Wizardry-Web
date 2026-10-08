@@ -1,51 +1,61 @@
-# 🧹 Wizardry Web — The Archives of Hogwarts
+# ⚡ Wizardry Web
 
-An immersive, magical Harry Potter-themed web application built with Python (Flask) and pure, custom CSS. Explore characters, houses, spells, and the rich lore of the wizarding world with a bespoke dark-fantasy aesthetic.
-
----
-
-## ✨ Key Features
-
-- **Custom Magical Theme:** Styled entirely from scratch with a custom dark parchment background, golden accents (`#ffd700`), and magical text shadows.
-- **Dynamic Character Lore:** Integrates custom biographical narrative details alongside character profiles to bring each witch and wizard to life.
-- **Interactive Spells & Houses:** Explore spells, incantations, and Hogwarts house traits in a clean, card-based layout.
-- **Flask Backend:** Powered by Python and Flask, routing data dynamically across templates.
+A fully custom-designed, immersive dark-fantasy full-stack web application built around the magical universe of Harry Potter. This project brings together live API data fetching, a custom dark-fantasy UI, and database-driven features—**100% conceptualized, designed, and developed from scratch.**
 
 ---
 
-## 🎨 Design Philosophy & Zero-Framework Approach
+## 🔮 Key Features
 
-* **No External Frameworks:** This project deliberately avoids third-party UI libraries like Bootstrap or Tailwind CSS. 
-* **Pure Custom CSS:** Every component—from the glowing navigation bar and custom typography hierarchy (`Cinzel Decorative` for headers and `MedievalSharp` for body text) to the interactive card hover effects—is crafted using 100% hand-written CSS (`styles.css`).
+* **Magical Homepage & API Integration:** Fetches live data from the Harry Potter API to showcase iconic characters and spells dynamically.
+* **Custom Dark-Fantasy UI/UX:** Hand-crafted CSS layout featuring custom Google Fonts (*Cinzel Decorative* and *MedievalSharp*), parchment-style containers, and golden glows.
+* **🦉 Owl Post System:** An interactive form that allows users ("witches and wizards") to dispatch messages to specific receivers across the magical realm.
+* **🗄️ Database-Driven Persistence:** Powered by **Flask-SQLAlchemy and SQLite**, ensuring that all dispatched owl messages are permanently stored and updated in a secure local database (`owl_posts.db`).
+* **📜 Magical Owl Archive:** A dedicated live archive page where visitors can view all stored messages sent across the realm.
+* **🗑️ Message Management (Vanish Feature):** Includes a dynamic delete function allowing administrators/users to remove unwanted or erroneous messages instantly.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Backend:** Python, Flask
-* **Frontend:** HTML5, CSS3 (Custom Stylesheet Architecture)
-* **Typography:** Google Fonts (*Cinzel Decorative*, *MedievalSharp*)
-* **Version Control:** Git & GitHub
+* **Backend:** Python, Flask, Flask-SQLAlchemy, SQLite
+* **Frontend:** HTML5, Jinja2 Templating, Custom CSS3
+* **External APIs:** Harry Potter API (`hp-api.onrender.com`)
+* **Security & Tools:** Python-Dotenv (`.env`), Git & GitHub, PyCharm / VS Code
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started Locally
+
+To run this project on your local machine, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/your-username/wizardry-web.git](https://github.com/your-username/wizardry-web.git)
-   cd wizardry-web
-
-Set up a virtual environment (recommended):
+   git clone [https://github.com/RichaVasisth47/Wizardry-Web.git](https://github.com/RichaVasisth47/Wizardry-Web.git)
+   cd Wizardry-Web
+Create and activate a virtual environment:
 
 Bash
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
+python -m venv .venv
+source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
+
+Install dependencies:
+
+Bash
+pip install Flask Flask-SQLAlchemy requests python-dotenv
+
+Set up environment variables:
+Create a .env file in the root directory and add your secret key:
+
+Code snippet
+SECRET_KEY=your_magical_secret_key_here
 
 Run the application:
 
 Bash
 python main.py
+Open your browser and navigate to http://127.0.0.1:5000.
 
-Open in browser:
-Navigate to http://127.0.0.1:5000 and enter the wizarding world!
+✨ Developed by
+Richa Vasisth
+
+Full-Stack Developer

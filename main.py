@@ -21,7 +21,7 @@ class OwlPost(db.Model):
     receiver = db.Column(db.String(100), nullable=False)
     message = db.Column(db.Text, nullable=False)
 
-# App context ke andar database tables create karna
+
 with app.app_context():
     db.create_all()
 

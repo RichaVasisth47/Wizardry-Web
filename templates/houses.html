@@ -9,15 +9,16 @@
 </head>
 <body>
     <!-- Magical Navbar -->
-    <nav class="wizard-navbar">
-        <div class="logo" style="color: #ffd700; font-family: 'Cinzel Decorative', cursive, serif; text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);">🧹 WIZARDRY WEB</div>
-
-        <ul class="nav-links">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('houses') }}" class="active">Houses</a></li>
-            <li><a href="{{ url_for('spells') }}">Spells</a></li>
-        </ul>
-    </nav>
+<nav class="wizard-navbar">
+    <div class="logo" style="color: #ffd700; font-family: 'Cinzel Decorative', cursive, serif; text-shadow: 0 0 8px #ffd700;">🧹Wizardry Web</div>
+    <ul class="nav-links">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('houses') }}">Houses</a></li>
+        <li><a href="{{ url_for('spells') }}">Spells</a></li>
+        <li><a href="{{ url_for('owl_post') }}">Owl Post</a></li>
+        <li><a href="{{ url_for('owl_archive') }}">Owl Archive</a></li>
+    </ul>
+</nav>
 
     <div class="magical-container">
         <header>

@@ -1,12 +1,33 @@
+import os
 import requests
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY", "fallback_magical_key") # Flash messages
 
+# Database Configuration (SQLite)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///owl_posts.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+# Database Model (Table Structure)
+class OwlPost(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    wizard_name = db.Column(db.String(100), nullable=False)
+    receiver = db.Column(db.String(100), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+
+# App context ke andar database tables create karna
+with app.app_context():
+    db.create_all()
 
 @app.route("/")
 def home():
-  # Home page ya featured characters
+  # Home page or featured characters
   url = "https://hp-api.onrender.com/api/characters"
   response = requests.get(url)
   return render_template("index.html", characters=response.json()[:10])
@@ -47,6 +68,38 @@ def character_detail(character_id):
                                            "A remarkable member of the magical world with a unique journey in Hogwarts.")
 
     return render_template("characters.html", character=character)
+
+
+# 🦉 Owl Post Route (Contact Form)
+@app.route("/owl-post", methods=["GET", "POST"])
+def owl_post():
+    if request.method == "POST":
+        wizard_name = request.form.get("wizard_name")
+        receiver = request.form.get("receiver")
+        message = request.form.get("message")
+
+        new_post = OwlPost(wizard_name=wizard_name, receiver=receiver, message=message)
+        db.session.add(new_post)
+        db.session.commit()
+        flash("Your owl has successfully taken flight with your message! 🦉✨", "success")
+        return redirect(url_for("owl_post"))
+
+    return render_template("owl_post.html")
+
+# 📜 Owl Archive Route (Display Saved Messages)
+@app.route("/owl-archive")
+def owl_archive():
+    posts = OwlPost.query.all()
+    return render_template("owl_archive.html", posts=posts)
+
+# 🗑️ Delete Owl Post Route
+@app.route("/delete-post/<int:post_id>", methods=["POST"])
+def delete_post(post_id):
+    post_to_delete = OwlPost.query.get_or_404(post_id)
+    db.session.delete(post_to_delete)
+    db.session.commit()
+    flash("The owl post has vanished into thin air! 🦉💨", "success")
+    return redirect(url_for("owl_archive"))
 
 if __name__ == "__main__":
   app.run(debug=True)

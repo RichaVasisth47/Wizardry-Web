@@ -389,3 +389,134 @@ body {
 h1, h2, .logo {
     font-family: 'Cinzel Decorative', cursive, serif;
 }
+
+/* ================= Owl Post Styling ================= */
+.owl-post-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: rgba(20, 20, 20, 0.85);
+    border: 2px solid #ffd700;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    font-family: 'MedievalSharp', cursive, serif;
+    color: #f0f0f0;
+}
+.owl-post-container h2 {
+    font-family: 'Cinzel Decorative', cursive, serif;
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffd700;
+    font-size: 1.1rem;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: #111;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #fff;
+    font-family: 'MedievalSharp', cursive, serif;
+    font-size: 1rem;
+}
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+.magical-btn {
+    background: linear-gradient(to bottom, #2c2c2c, #111);
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    padding: 12px 25px;
+    font-family: 'Cinzel Decorative', cursive, serif;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+.magical-btn:hover {
+    background: #ffd700;
+    color: #111;
+    box-shadow: 0 0 15px #ffd700;
+}
+.flash-message {
+    background: rgba(40, 167, 69, 0.2);
+    border: 1px solid #28a745;
+    color: #d4edda;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+/* ================= Owl Archive & Delete Button Styling ================= */
+.archive-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'MedievalSharp', cursive, serif;
+    color: #f0f0f0;
+}
+.archive-container h2 {
+    font-family: 'Cinzel Decorative', cursive, serif;
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+.post-card {
+    background: rgba(20, 20, 20, 0.85);
+    border: 1px solid #ffd700;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+}
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.post-card h3 {
+    color: #ffd700;
+    margin: 0;
+    font-size: 1.2rem;
+}
+.post-card p {
+    margin: 5px 0;
+    font-size: 1.05rem;
+}
+.delete-btn {
+    background: transparent;
+    border: 1px solid #ff4d4d;
+    color: #ff4d4d;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.delete-btn:hover {
+    background: #ff4d4d;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.6);
+}
+.no-posts {
+    text-align: center;
+    color: #aaa;
+    font-size: 1.2rem;
+    margin-top: 50px;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owl Archive - Wizardry Web</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Harry Potter style magical font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Magical Navbar -->
+    <nav class="wizard-navbar">
+        <div class="logo" style="color: #ffd700; font-family: 'Cinzel Decorative', cursive, serif; text-shadow: 0 0 8px #ffd700;">Wizardry Web</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('houses') }}">Houses</a></li>
+            <li><a href="{{ url_for('spells') }}">Spells</a></li>
+            <li><a href="{{ url_for('owl_post') }}">Owl Post</a></li>
+            <li><a href="{{ url_for('owl_archive') }}">Owl Archive</a></li>
+        </ul>
+    </nav>
+
+    <!-- Archive Content -->
+    <div class="archive-container">
+        <h2><i class="fa-solid fa-scroll"></i> Magical Owl Archive</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message" style="background: rgba(40, 167, 69, 0.2); border: 1px solid #28a745; color: #d4edda; padding: 12px; border-radius: 6px; text-align: center; margin-bottom: 20px; font-family: 'MedievalSharp', cursive, serif;">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if posts %}
+            {% for post in posts %}
+                <div class="post-card">
+                    <div class="post-header">
+                        <h3><i class="fa-solid fa-feather"></i> From: {{ post.wizard_name }}</h3>
+                        <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST" style="margin: 0;">
+                            <button type="submit" class="delete-btn" title="Vanish this message"><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
+                    </div>
+                    <p><strong>To Receiver:</strong> {{ post.receiver }}</p>
+                    <p><strong>Message:</strong> "{{ post.message }}"</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-posts">No owls have taken flight yet. Send a message via Owl Post first!</p>
+        {% endif %}
+    </div>
+</body>
+</html>

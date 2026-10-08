@@ -1,4 +1,4 @@
-# ⚡ Wizardry Web
+# 🧹 Wizardry Web
 
 A fully custom-designed, immersive dark-fantasy full-stack web application built around the magical universe of Harry Potter. This project brings together live API data fetching, a custom dark-fantasy UI, and database-driven features—**100% conceptualized, designed, and developed from scratch.**
 

@@ -625,3 +625,49 @@ body {
         transform: translateY(-200px) translateX(0);
     }
 }
+
+/* ================= Mobile Responsive ================= */
+@media (max-width: 768px) {
+    .wizard-navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 16px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+    }
+
+    nav .nav-links a {
+        margin-left: 0;
+        font-size: 15px;
+    }
+
+    nav .logo {
+        font-size: 20px;
+    }
+
+    .magical-container,
+    .container {
+        padding: 16px;
+        margin: 20px auto;
+    }
+
+    header h1,
+    h1.page-title,
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .wizard-card,
+    .house-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .card-grid {
+        justify-content: center;
+    }
+}

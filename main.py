@@ -33,11 +33,29 @@ with app.app_context():
 
 @app.route("/")
 def home():
-  # Home page or featured characters
-  url = "https://hp-api.onrender.com/api/characters"
-  response = requests.get(url)
-  return render_template("index.html", characters=response.json()[:10])
-
+    # Home page or featured characters with fallback for PythonAnywhere free tier
+    url = "https://hp-api.onrender.com/api/characters"
+    try:
+        response = requests.get(url, timeout=5)
+        response.raise_for_status()
+        characters = response.json()[:10]
+    except Exception as e:
+        # Fallback dummy characters if external API is blocked by PythonAnywhere firewall
+        characters = [
+            {
+                "name": "Harry Potter",
+                "house": "Gryffindor",
+                "actor": "Daniel Radcliffe",
+                "image": ""
+            },
+            {
+                "name": "Hermione Granger",
+                "house": "Gryffindor",
+                "actor": "Emma Watson",
+                "image": ""
+            }
+        ]
+    return render_template("index.html", characters=characters)
 
 @app.route("/spells")
 def spells():

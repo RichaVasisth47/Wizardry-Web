@@ -1,8 +1,13 @@
 import os
-import requests
-from flask import Flask, render_template, request, redirect, url_for, flash
+
+from flask import request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
+import requests
+from flask import Flask, render_template
+
+
+
 
 load_dotenv()
 
@@ -103,6 +108,31 @@ def delete_post(post_id):
     db.session.commit()
     flash("The owl post has vanished into thin air! 🦉💨", "success")
     return redirect(url_for("owl_archive"))
+
+@app.route('/characters')
+def characters():
+    try:
+        response = requests.get('https://hp-api.onrender.com/api/characters', timeout=5)
+        response.raise_for_status()
+        characters_data = response.json()
+    except Exception as e:
+        # PythonAnywhere free tier fallback data
+        characters_data = [
+            {
+                "name": "Harry Potter",
+                "house": "Gryffindor",
+                "actor": "Daniel Radcliffe",
+                "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f"
+            },
+            {
+                "name": "Hermione Granger",
+                "house": "Gryffindor",
+                "actor": "Emma Watson",
+                "image": ""
+            }
+        ]
+    return render_template('characters.html', characters=characters_data)
+
 
 if __name__ == "__main__":
   app.run(debug=True)

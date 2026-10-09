@@ -20,6 +20,7 @@ class OwlPost(db.Model):
     wizard_name = db.Column(db.String(100), nullable=False)
     receiver = db.Column(db.String(100), nullable=False)
     message = db.Column(db.Text, nullable=False)
+    house = db.Column(db.String(50), default="Gryffindor") # New Field
 
 
 with app.app_context():
@@ -77,12 +78,14 @@ def owl_post():
         wizard_name = request.form.get("wizard_name")
         receiver = request.form.get("receiver")
         message = request.form.get("message")
+        house = request.form.get("house")  # Get house from dropdown
 
-        new_post = OwlPost(wizard_name=wizard_name, receiver=receiver, message=message)
+        new_post = OwlPost(wizard_name=wizard_name, receiver=receiver, message=message, house=house)
         db.session.add(new_post)
         db.session.commit()
-        flash("Your owl has successfully taken flight with your message! 🦉✨", "success")
-        return redirect(url_for("owl_post"))
+
+        flash("Your owl has successfully taken flight! 🦉✨", "success")
+        return redirect(url_for("owl_archive"))
 
     return render_template("owl_post.html")
 

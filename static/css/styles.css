@@ -520,3 +520,108 @@ h1, h2, .logo {
     font-size: 1.2rem;
     margin-top: 50px;
 }
+
+/* ================= Magical Sparkles & Floating Particles ================= */
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ================= Clean Form & Sparkles Fix ================= */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: rgba(20, 20, 20, 0.85);
+    border: 2px solid #ffd700;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+    font-family: 'MedievalSharp', cursive, serif;
+    color: #f0f0f0;
+    position: relative;
+    z-index: 10;
+}
+
+.form-container h2 {
+    font-family: 'Cinzel Decorative', cursive, serif;
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffd700;
+}
+
+.form-group input,
+.form-group textarea,
+.house-select {
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #ffd700;
+    border-radius: 5px;
+    color: #fff;
+    font-family: 'MedievalSharp', cursive, serif;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #ffd700;
+    color: #000;
+    font-family: 'Cinzel Decorative', cursive, serif;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #ffcc00;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+
+/* ================= Animated Floating Magical Sparkles ================= */
+.magical-sparkles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, #ffd700, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 90px 40px, #ffd700, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 80px, #ffdf00, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 160px 120px, #ffffff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    opacity: 0.5;
+    animation: floatSparkles 15s linear infinite;
+    z-index: 0; 
+}
+
+@keyframes floatSparkles {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-100px) translateX(20px);
+    }
+    100% {
+        transform: translateY(-200px) translateX(0);
+    }
+}

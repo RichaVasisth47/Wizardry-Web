@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+<div class="magical-sparkles"></div>
     <!-- Magical Navbar -->
 <nav class="wizard-navbar">
     <div class="logo" style="color: #ffd700; font-family: 'Cinzel Decorative', cursive, serif; text-shadow: 0 0 8px #ffd700;">🧹Wizardry Web</div>
@@ -36,5 +37,35 @@
             <p><strong>Role & Story:</strong> {{ character.bio }}</p>
         </div>
     </div>
+<!-- Background Magical Theme Music -->
+<audio id="bgMusic" src="{{ url_for('static', filename='music/harry_potter.mp3') }}" loop autoplay></audio>
+
+<!-- Floating Corner Music Toggle Button -->
+<button id="musicToggleBtn" onclick="toggleBackgroundMusic()" title="Toggle Background Music" style="position: fixed; bottom: 20px; right: 20px; z-index: 10000; background: rgba(0,0,0,0.8); border: 2px solid #ffd700; color: #ffd700; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; font-size: 1.1rem; box-shadow: 0 0 10px rgba(255,215,0,0.5); transition: 0.3s;">
+    <i id="musicIcon" class="fa-solid fa-volume-high"></i>
+</button>
+
+<script>
+    const bgMusic = document.getElementById('bgMusic');
+    bgMusic.volume = 0.25;
+
+    // Browser autoplay policy bypass
+    document.addEventListener('click', () => {
+        if (bgMusic.paused) {
+            bgMusic.play().catch(e => console.log("Autoplay blocked"));
+        }
+    }, { once: true });
+
+    function toggleBackgroundMusic() {
+        const musicIcon = document.getElementById('musicIcon');
+        if (bgMusic.paused) {
+            bgMusic.play();
+            musicIcon.className = "fa-solid fa-volume-high";
+        } else {
+            bgMusic.pause();
+            musicIcon.className = "fa-solid fa-volume-xmark";
+        }
+    }
+</script>
 </body>
 </html>

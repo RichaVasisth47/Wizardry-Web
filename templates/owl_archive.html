@@ -4,17 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owl Archive - Wizardry Web</title>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Harry Potter style magical font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
-    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <!-- Magical Navbar -->
+<div class="magical-sparkles"></div>
     <nav class="wizard-navbar">
-        <div class="logo" style="color: #ffd700; font-family: 'Cinzel Decorative', cursive, serif; text-shadow: 0 0 8px #ffd700;">Wizardry Web</div>
+        <div class="logo" style="color: #ffd700; font-family: 'Cinzel Decorative', cursive, serif; text-shadow: 0 0 8px #ffd700;">🧹Wizardry Web</div>
         <ul class="nav-links">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('houses') }}">Houses</a></li>
@@ -24,7 +21,6 @@
         </ul>
     </nav>
 
-    <!-- Archive Content -->
     <div class="archive-container">
         <h2><i class="fa-solid fa-scroll"></i> Magical Owl Archive</h2>
 
@@ -40,7 +36,7 @@
             {% for post in posts %}
                 <div class="post-card">
                     <div class="post-header">
-                        <h3><i class="fa-solid fa-feather"></i> From: {{ post.wizard_name }}</h3>
+                        <h3><i class="fa-solid fa-feather"></i> From: {{ post.wizard_name }} <span style="font-size: 0.9rem; color: #aaa; margin-left: 10px;">({{ post.house }})</span></h3>
                         <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST" style="margin: 0;">
                             <button type="submit" class="delete-btn" title="Vanish this message"><i class="fa-solid fa-trash-can"></i></button>
                         </form>
@@ -53,5 +49,35 @@
             <p class="no-posts">No owls have taken flight yet. Send a message via Owl Post first!</p>
         {% endif %}
     </div>
+<!-- Background Magical Theme Music -->
+<audio id="bgMusic" src="{{ url_for('static', filename='music/harry_potter.mp3') }}" loop autoplay></audio>
+
+<!-- Floating Corner Music Toggle Button -->
+<button id="musicToggleBtn" onclick="toggleBackgroundMusic()" title="Toggle Background Music" style="position: fixed; bottom: 20px; right: 20px; z-index: 10000; background: rgba(0,0,0,0.8); border: 2px solid #ffd700; color: #ffd700; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; font-size: 1.1rem; box-shadow: 0 0 10px rgba(255,215,0,0.5); transition: 0.3s;">
+    <i id="musicIcon" class="fa-solid fa-volume-high"></i>
+</button>
+
+<script>
+    const bgMusic = document.getElementById('bgMusic');
+    bgMusic.volume = 0.25;
+
+    // Browser autoplay policy bypass
+    document.addEventListener('click', () => {
+        if (bgMusic.paused) {
+            bgMusic.play().catch(e => console.log("Autoplay blocked"));
+        }
+    }, { once: true });
+
+    function toggleBackgroundMusic() {
+        const musicIcon = document.getElementById('musicIcon');
+        if (bgMusic.paused) {
+            bgMusic.play();
+            musicIcon.className = "fa-solid fa-volume-high";
+        } else {
+            bgMusic.pause();
+            musicIcon.className = "fa-solid fa-volume-xmark";
+        }
+    }
+</script>
 </body>
 </html>

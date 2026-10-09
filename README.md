@@ -1,7 +1,8 @@
-🧹 Wizardry Web
+#🧹 Wizardry Web
+
 A fully custom-designed, immersive dark-fantasy full-stack web application built around the magical universe of Harry Potter. This project brings together local JSON data loading, a custom dark-fantasy UI, database-driven features, and cinematic immersive audio—100% conceptualized, designed, and developed from scratch.
 
-🔮 Key Features
+##🔮 Key Features
 - Magical Homepage & Data Management: Loads character data locally from structured JSON files (`characters.json`) to showcase iconic characters and spells dynamically.
 - Custom Dark-Fantasy UI/UX: Hand-crafted CSS layout featuring custom Google Fonts (Cinzel Decorative and MedievalSharp), parchment-style containers, and golden glows.
 - 🎵 Cinematic Background Theme: Immersive background music (`harry_potter.mp3`) featuring a persistent floating toggle button with browser autoplay policy handling.
@@ -10,13 +11,13 @@ A fully custom-designed, immersive dark-fantasy full-stack web application built
 - 📜 Magical Owl Archive: A dedicated live archive page where visitors can view all stored messages sent across the realm.
 - 🗑️ Message Management (Vanish Feature): Includes a dynamic delete function allowing administrators/users to remove unwanted or erroneous messages instantly.
 
-🛠️ Tech Stack
+##🛠️ Tech Stack
 - Backend: Python, Flask, Flask-SQLAlchemy, SQLite
 - Frontend: HTML5, Jinja2 Templating, Custom CSS3, JavaScript (Audio API)
 - Data Storage: Local JSON files (`characters.json`, `spells.json`)
 - Security & Tools: Python-Dotenv (`.env`), Git & GitHub, PyCharm / VS Code
 
-🚀 Getting Started Locally
+##🚀 Getting Started Locally
 To run this project on your local machine, follow these steps:
 1. Clone the repository: 
    ```bash

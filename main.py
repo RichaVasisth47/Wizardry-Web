@@ -1,10 +1,17 @@
 import os
-
-from flask import request, redirect, url_for, flash
+from flask import request, redirect, url_for, flash, abort
 from flask_sqlalchemy import SQLAlchemy
-from dotenv import load_dotenv
-import requests
 from flask import Flask, render_template
+import json
+from dotenv import load_dotenv
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
+
+
+def load_json(filename):
+    with open(os.path.join(BASE_DIR, "data", filename), encoding="utf-8") as f:
+        return json.load(f)
 
 
 
@@ -33,66 +40,38 @@ with app.app_context():
 
 @app.route("/")
 def home():
-    # Home page or featured characters with fallback for PythonAnywhere free tier
-    url = "https://hp-api.onrender.com/api/characters"
-    try:
-        response = requests.get(url, timeout=5)
-        response.raise_for_status()
-        characters = response.json()[:10]
-    except Exception as e:
-        # Fallback dummy characters if external API is blocked by PythonAnywhere firewall
-        characters = [
-            {
-                "name": "Harry Potter",
-                "house": "Gryffindor",
-                "actor": "Daniel Radcliffe",
-                "image": ""
-            },
-            {
-                "name": "Hermione Granger",
-                "house": "Gryffindor",
-                "actor": "Emma Watson",
-                "image": ""
-            }
-        ]
+    characters = load_json("characters.json")[:10]
     return render_template("index.html", characters=characters)
 
 @app.route("/spells")
 def spells():
-  url = "https://hp-api.onrender.com/api/spells"
-  response = requests.get(url)
-  return render_template("spells.html", spells=response.json())
-
+    return render_template("spells.html", spells=load_json("spells.json"))
 
 @app.route("/houses")
 def houses():
   return render_template("houses.html")
 
-
 @app.route("/character/<string:character_id>")
 def character_detail(character_id):
-    url = f"https://hp-api.onrender.com/api/character/{character_id}"
-    response = requests.get(url)
-    character_data = response.json()
-    character = character_data[0] if isinstance(character_data, list) and character_data else character_data
+      all_characters = load_json("characters.json")
+      character = next((c for c in all_characters if c["id"] == character_id), None)
+      if character is None:
+          abort(404)
 
-    # Custom roles/biography dictionary for main characters
-    character_roles = {
-        "Harry Potter": "The Boy Who Lived, the wizard destined to defeat Lord Voldemort and leader of Dumbledore's Army.",
-        "Hermione Granger": "The brightest witch of her age, known for her unmatched intellect, loyalty, and vital role in finding the Horcruxes.",
-        "Ron Weasley": "Harry's fiercely loyal best friend, master chess player, and a core member of Dumbledore's Army.",
-        "Severus Snape": "The enigmatic Double Agent, Potions Master, and Head of Slytherin house who secretly protected Harry throughout his journey.",
-        "Draco Malfoy": "A Slytherin student, member of the Inquisitorial Squad, and a key figure caught in the pressures of the Death Eaters.",
-        "Albus Dumbledore": "The legendary Headmaster of Hogwarts, powerful wizard, and mentor to Harry Potter."
-    }
-
-    # Get bio if available, otherwise use a default magical line
-    char_name = character.get("name")
-    character['bio'] = character_roles.get(char_name,
-                                           "A remarkable member of the magical world with a unique journey in Hogwarts.")
-
-    return render_template("characters.html", character=character)
-
+      # Custom roles/biography dictionary for main characters
+      character_roles = {
+              "Harry Potter": "The Boy Who Lived, the wizard destined to defeat Lord Voldemort and leader of Dumbledore's Army.",
+              "Hermione Granger": "The brightest witch of her age, known for her unmatched intellect, loyalty, and vital role in finding the Horcruxes.",
+              "Ron Weasley": "Harry's fiercely loyal best friend, master chess player, and a core member of Dumbledore's Army.",
+              "Severus Snape": "The enigmatic Double Agent, Potions Master, and Head of Slytherin house who secretly protected Harry throughout his journey.",
+              "Draco Malfoy": "A Slytherin student, member of the Inquisitorial Squad, and a key figure caught in the pressures of the Death Eaters.",
+              "Albus Dumbledore": "The legendary Headmaster of Hogwarts, powerful wizard, and mentor to Harry Potter."
+      }
+      character["bio"] = character_roles.get(
+          character.get("name"),
+          "A remarkable member of the magical world with a unique journey in Hogwarts."
+      )
+      return render_template("characters.html", character=character)
 
 # 🦉 Owl Post Route (Contact Form)
 @app.route("/owl-post", methods=["GET", "POST"])
@@ -126,31 +105,6 @@ def delete_post(post_id):
     db.session.commit()
     flash("The owl post has vanished into thin air! 🦉💨", "success")
     return redirect(url_for("owl_archive"))
-
-@app.route('/characters')
-def characters():
-    try:
-        response = requests.get('https://hp-api.onrender.com/api/characters', timeout=5)
-        response.raise_for_status()
-        characters_data = response.json()
-    except Exception as e:
-        # PythonAnywhere free tier fallback data
-        characters_data = [
-            {
-                "name": "Harry Potter",
-                "house": "Gryffindor",
-                "actor": "Daniel Radcliffe",
-                "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f"
-            },
-            {
-                "name": "Hermione Granger",
-                "house": "Gryffindor",
-                "actor": "Emma Watson",
-                "image": ""
-            }
-        ]
-    return render_template('characters.html', characters=characters_data)
-
 
 if __name__ == "__main__":
   app.run(debug=True)
